@@ -46,7 +46,7 @@
 
 
                 <TextView
-                    android:id="@+id/team_one_score_value"
+                    android:id="@+id/team_one_points_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="24dp"
@@ -134,7 +134,7 @@
 
 
                 <TextView
-                    android:id="@+id/team_two_score_value"
+                    android:id="@+id/team_two_points_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="24dp"
