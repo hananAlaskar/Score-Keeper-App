@@ -1,17 +1,49 @@
 package com.example.scorekeeperapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+
+
+    @BindView(R.id.team_one_increase_points_btn)
+    protected Button mTeamOneIncreasePoints_btn;
+
+    @BindView(R.id.team_one_increase_fouls_btn)
+    protected Button mTeamOneIncreaseFouls_btn;
+
+    @BindView(R.id.team_two_increase_points_btn)
+    protected Button mTeamTwoIncreasePoints_btn;
+
+    @BindView(R.id.team_two_increase_fouls_btn)
+    protected Button mTeamTwoIncreaseFouls_btn;
+
+    @BindView(R.id.reset_btn)
+    protected Button mReset_btn;
+
+    @BindView(R.id.team_one_points_value)
+    protected TextView mTeamOnePoints_tv;
+
+    @BindView(R.id.team_one_fouls_value)
+    protected TextView mTeamOneFouls_tv;
+
+    @BindView(R.id.team_two_points_value)
+    protected TextView mTeamTwoPoints_tv;
+
+    @BindView(R.id.team_two_fouls_value)
+    protected TextView mTeamTwoFouls_tv;
+
+
     private int mTeamOnePoints;
     private int mTeamOneFouls;
-
     private int mTeamTwoPoints;
     private int mTeamTwoFouls;
 
@@ -22,26 +54,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getInitialValues();
+        ButterKnife.bind(this);
+
         addClickListener();
-    }
-
-    private void getInitialValues() {
-
-        mTeamOnePoints = Integer.parseInt(((TextView)(findViewById(R.id.team_one_points_value))).getText().toString());
-        mTeamOneFouls = Integer.parseInt(((TextView)(findViewById(R.id.team_one_fouls_value))).getText().toString());
-        mTeamTwoPoints = Integer.parseInt(((TextView)(findViewById(R.id.team_two_points_value))).getText().toString());
-        mTeamTwoFouls = Integer.parseInt(((TextView)(findViewById(R.id.team_two_fouls_value))).getText().toString());
-
     }
 
     private void addClickListener() {
 
-        findViewById(R.id.team_one_increase_points_btn).setOnClickListener(this);
-        findViewById(R.id.team_one_increase_fouls_btn).setOnClickListener(this);
-        findViewById(R.id.team_two_increase_points_btn).setOnClickListener(this);
-        findViewById(R.id.team_two_increase_fouls_btn).setOnClickListener(this);
-        findViewById(R.id.reset_btn).setOnClickListener(this);
+        mTeamOneIncreasePoints_btn.setOnClickListener(this);
+        mTeamOneIncreaseFouls_btn.setOnClickListener(this);
+        mTeamTwoIncreasePoints_btn.setOnClickListener(this);
+        mTeamTwoIncreaseFouls_btn.setOnClickListener(this);
+        mReset_btn.setOnClickListener(this);
 
     }
 
@@ -74,19 +98,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateTeamOnePointsView() {
 
-        ((TextView)(findViewById(R.id.team_one_points_value))).setText(String.valueOf(mTeamOnePoints));
+        mTeamOnePoints_tv.setText(String.valueOf(mTeamOnePoints));
     }
 
     private void updateTeamOneFoulsView() {
-        ((TextView)(findViewById(R.id.team_one_fouls_value))).setText(String.valueOf(mTeamOneFouls));
+       mTeamOneFouls_tv.setText(String.valueOf(mTeamOneFouls));
     }
 
     private void updateTeamTwoPointsView() {
-        ((TextView)(findViewById(R.id.team_two_points_value))).setText(String.valueOf(mTeamTwoPoints));
+        mTeamTwoPoints_tv.setText(String.valueOf(mTeamTwoPoints));
     }
 
     private void updateTeamTwoFoulsView() {
-        ((TextView)(findViewById(R.id.team_two_fouls_value))).setText(String.valueOf(mTeamTwoFouls));
+        mTeamTwoFouls_tv.setText(String.valueOf(mTeamTwoFouls));
     }
 
 
